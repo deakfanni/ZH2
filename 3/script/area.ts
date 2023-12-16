@@ -20,13 +20,17 @@ function calcArea1(): void {
 function calcArea2(): void {
     const side1 = toPosNum((document.getElementById("side-1") as HTMLInputElement).value)
     const side2 = toPosNum((document.getElementById("side-2") as HTMLInputElement).value)
-    const angle = toPosNum((document.getElementById("angle") as HTMLInputElement).value) / 180 * Math.PI
+    const angle = toPosNum((document.getElementById("angle") as HTMLInputElement).value)
 
     if (Number.isNaN(side1) || Number.isNaN(side2) || Number.isNaN(angle)) {
         alert("Hibás vagy hiányzó adatok!")
         return
     }
-    document.getElementById("area")!.innerText = `${(side1 * side2 * Math.sin(angle)).toFixed(2)}`
+    if (angle > 180) {
+        alert("A megadott szögértéknek a [0, 180] intervallumba kell esnie!");
+        return;
+    }
+    document.getElementById("area")!.innerText = `${(side1 * side2 * Math.sin(angle / 180 * Math.PI)).toFixed(2)}`
 }
 
 function calcArea(): void {

@@ -17,12 +17,16 @@ function calcArea1() {
 function calcArea2() {
     var side1 = toPosNum(document.getElementById("side-1").value);
     var side2 = toPosNum(document.getElementById("side-2").value);
-    var angle = toPosNum(document.getElementById("angle").value) / 180 * Math.PI;
+    var angle = toPosNum(document.getElementById("angle").value);
     if (Number.isNaN(side1) || Number.isNaN(side2) || Number.isNaN(angle)) {
         alert("Hibás vagy hiányzó adatok!");
         return;
     }
-    document.getElementById("area").innerText = "".concat((side1 * side2 * Math.sin(angle)).toFixed(2));
+    if (angle > 180) {
+        alert("A megadott szögértéknek a [0, 180] intervallumba kell esnie!");
+        return;
+    }
+    document.getElementById("area").innerText = "".concat((side1 * side2 * Math.sin(angle / 180 * Math.PI)).toFixed(2));
 }
 function calcArea() {
     var method = document.querySelector("input[name='method']:checked").value;
