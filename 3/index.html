@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Harmadik feladat</title>
+        <link rel="stylesheet" href="../style/styles.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="../script/theme.js"></script>
+        <script src="script/area.js"></script>
+        <script src="script/choose.js"></script>
+        <script>
+            window.addEventListener("load", () => {
+                onMethodChanged()
+                addString()
+                addString()
+                addString()
+            })
+        </script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">1. feladat</a></li>
+                    <li><a href="#" class="selected">3. feladat</a></li>
+                    <li><a href="../4/index.html">4. feladat</a></li>
+                </ul>
+            </nav>
+            <button class="primary" style="margin-right: 2rem;" onclick="changeTheme()">
+                <span id="theme-label">Világos</span>
+                mód
+            </button>
+        </header>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+            <span class="section-title">Területszámítás</span>
+            <div class="card-text" style="width: 52rem; padding: 1.5rem">
+                <label class="form-label" for="method-1">
+                    <input type="radio" name="method" id="method-1" value="method-1" onchange="onMethodChanged()" checked>
+                    Alap és magasság alapján
+                </label>
+                <label class="form-label" style="margin-top: 0.5rem;" for="method-2">
+                    <input type="radio" name="method" id="method-2" value="method-2" onchange="onMethodChanged()">
+                    Két oldal és a közbezárt szög alapján
+                </label>
+                <div style="display: flex; justify-content: center; margin-top: 1rem;">
+                    <button class="primary" style="width: 10rem;" onclick="calcArea()">Számol</button>
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: row; align-items: start; margin-top: 1rem; width: 52rem;">
+                <div id="card-method-1" class="card-text" style="width: 100%">
+                    <label for="base" class="text-label">
+                        Alap
+                        <input type="text" id="base" placeholder="Alap" class="fill-width labelled-input">
+                    </label>
+                    <label for="height" class="text-label" style="margin-top: 1rem;">
+                        Magasság
+                        <input type="text" id="height" placeholder="Magasság" class="fill-width labelled-input">
+                    </label>
+                </div>
+                <div id="card-method-2" class="card-text" style="width: 100%; margin-left: 1rem;">
+                    <label for="side-1" class="text-label">
+                        1. oldal
+                        <input type="text" id="side-1" placeholder="1. oldal" class="fill-width labelled-input">
+                    </label>
+                    <label for="side-2" class="text-label" style="margin-top: 1rem;">
+                        2. oldal
+                        <input type="text" id="side-2" placeholder="2. oldal" class="fill-width labelled-input">
+                    </label>
+                    <label for="angle" class="text-label" style="margin-top: 1rem;">
+                        Közbezárt szög (°)
+                        <input type="text" id="angle" placeholder="Közbezárt szög (°)" class="fill-width labelled-input">
+                    </label>
+                </div>
+            </div>
+            <div class="card-text" style="width: 52rem; margin-top: 1rem;">
+                Eredmény:
+                <span id="area">-</span>
+            </div>
+            <hr style="width: 100%; margin: 2rem 0rem 2rem 0rem;">
+            <span class="section-title">Random válogatás</span>
+            <div id="items" class="card-text" style="width: 52rem;">
+            </div>
+            <div style="margin-top: 1rem;">
+                <button class="primary" style="width: 10rem;" onclick="addString()">Új tétel</button>
+                <button class="primary" style="margin-left: 0.5rem; width: 10rem;" onclick="choose()">Kiválaszt</button>
+            </div>
+            <div class="card-text" style="width: 52rem; margin-top: 1rem;">
+                Kiválasztott tétel:
+                <ul id="chosen">
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
